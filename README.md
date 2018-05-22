@@ -27,10 +27,6 @@ Puis lance.
 ```
 index.html
 ```
-## Pour lancer
-
-sinon voici le lien heroku.
-* lien.com
 
 
 ### Groupe :
