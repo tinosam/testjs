@@ -55,12 +55,14 @@
   var operation = []
   var number = ""
 
+  // Au cas ou l'on clique sur les nombres, on enregistre l'operation a faire
   $(".number").click(function(){
     number += $(this).text()
     $("#operation").text(operation.join("")+number)
     var op = operation.join("")
   })
 
+  // Au cas ou on clique sur l'un des operateur de calcul, on enregistre l'operation a faire
   $(".operator").click(function(){
     operation.push(number)
     operation.push($(this).text())
@@ -68,6 +70,7 @@
     number = ""
   })
 
+  // Au cas ou on clique sur le bouton clear, on reinitialise
   $(".clear").click(function () {
     $("#operation").text("0")
     $("#result").text("0")
@@ -75,6 +78,7 @@
     number = ""
   })
 
+  // Au cas ou on clique sur le bouton egale, on execute l'operation en attente grace a la fonction execute()
   $(".equal").click(function () {
     operation.push(number)
     console.log(operation)

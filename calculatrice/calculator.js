@@ -1,3 +1,4 @@
+// Liste des fonctions qui execute des operations specifiques (addition, soustraction, multiplication, division)
 function add(x,y) {
   return x+y
 }
@@ -14,6 +15,7 @@ function divide(x,y) {
   return x/y
 }
 
+// Fonction qui execute le calcul en fonction de l'operateur defini
 function calculate(x, op, y) {
   switch (op){
     case "+":
@@ -33,6 +35,17 @@ function calculate(x, op, y) {
   }
 }
 
+/*
+
+Cette fonction execute une serie de calcul a faire, elle prend en parametre un array
+ex: Pour un array ["1","+","2","+","3"]
+on a
+> 1 + 2 =
+-> 3
+> + 3 =
+-> 6
+
+*/
 function execute(operation) {
   var operator = []
   var num = []
