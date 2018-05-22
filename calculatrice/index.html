@@ -57,15 +57,8 @@
 
   $(".number").click(function(){
     number += $(this).text()
-    if ($("#operation").text() == "0" || !isNaN(parseInt($("#operation").text()))) {
-      $("#operation").text("")
-      $("#operation").text(number)
-    } else {
-      $("#operation").text(operation.join("")+number)
-      operation.push(number)
-      number = ""
-      console.log(operation)
-    }
+    $("#operation").text(operation.join("")+number)
+    var op = operation.join("")
   })
 
   $(".operator").click(function(){
@@ -79,9 +72,12 @@
     $("#operation").text("0")
     $("#result").text("0")
     operation = []
+    number = ""
   })
 
   $(".equal").click(function () {
+    operation.push(number)
+    console.log(operation)
     if($("#result").text() == "0"){
       $("#result").text("")
       operation = operation.filter(function(v){return v !== ''})

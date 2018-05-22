@@ -5,6 +5,7 @@
 .affichage{
   width: 100%;
   text-align: end;
+  overflow: hidden;
 
   color: rgb(253, 253, 253);
   background-color: rgb(41, 41, 41);
