@@ -5,9 +5,9 @@ Dans ce projet vous allez voir les exercices de chauffe by madagascar
 ## Pour lancer
 
 Allez dans le dossier chauffe. 
-Puis lance.
+Puis lancer index.html.
 
-### requis
+### Pour ceux qui sont chaud
 
 vous devez avoir node pour tester dans votre pc, puis
 
