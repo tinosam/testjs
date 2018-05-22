@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calculatrice</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 shadow-lg content m-auto">
+        <div class="row">
+          <div class="col-lg-12 result p-4 affichage">
+            <p class="operation" id="operation">0</p>
+            <p class="result" id="result">0</p>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3  p-3 clear" id="clear">C</div>
+        </div>
+        <div class="row text-center">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 number">7</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 number">8</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 number">9</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 operator">/</div>
+        </div>
+        <div class="row text-center">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 number">4</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 number">5</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 number">6</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 operator">*</div>
+        </div>
+        <div class="row text-center">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 number">1</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 number">2</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 number">3</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 operator">-</div>
+        </div>
+        <div class="row text-center">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 number">0</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 comma">.</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 equal">=</div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 p-3 operator">+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="jquery.min.js"></script>
+<script src="calculator.js"></script>
+<script>
+  var operation = []
+  var number = ""
+
+  $(".number").click(function(){
+    number += $(this).text()
+    if ($("#operation").text() == "0" || !isNaN(parseInt($("#operation").text()))) {
+      $("#operation").text("")
+      $("#operation").text(number)
+    } else {
+      $("#operation").text(operation.join("")+number)
+      operation.push(number)
+      number = ""
+      console.log(operation)
+    }
+  })
+
+  $(".operator").click(function(){
+    operation.push(number)
+    operation.push($(this).text())
+    $("#operation").text(operation.join(""))
+    number = ""
+  })
+
+  $(".clear").click(function () {
+    $("#operation").text("0")
+    $("#result").text("0")
+    operation = []
+  })
+
+  $(".equal").click(function () {
+    if($("#result").text() == "0"){
+      $("#result").text("")
+      operation = operation.filter(function(v){return v !== ''})
+      $("#result").text(execute(operation))
+      number = ""
+    }else{
+      $("#result").text("")
+      operation = operation.filter(function(v){return v !== ''})
+      $("#result").text(execute(operation))
+      number = ""
+    }
+  })
+
+</script>
+</html>
